@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ActLikePro</string>
+    <string name="error_cannot_reach_server">Error cannot reach server</string>
+    <string name="try_again">Try again</string>
+</resources>
