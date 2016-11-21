@@ -32,32 +32,33 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
+        String API = "https://api.github.com";
+
         mProgressBar = findViewById(R.id.intro_progressbar);
         mContentContainer = findViewById(R.id.intro_notification_container);
         mButtonRetry = findViewById(R.id.intro_retry_button);
 
-        mButtonRetry.setOnClickListener(new View.OnClickListener() {
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint(API)
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .build();
+        gitapi git = restAdapter.create(gitapi.class);
+
+        git.getFeed("mojombo", new Callback<gitmodel>() {
             @Override
-            public void onClick(View view) {
+            public void success(gitmodel gitmodel, Response response) {
+                Toast.makeText(IntroActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 mProgressBar.setVisibility(View.VISIBLE);
                 mContentContainer.setVisibility(View.GONE);
                 mButtonRetry.setVisibility(View.GONE);
+            }
 
-                likeaPro.getService().getFeed("mojombo", new Callback<gitmodel>() {
-                    @Override
-                    public void success(gitmodel gitmodel, Response response) {
-                        Toast.makeText(IntroActivity.this, gitmodel.getName(), Toast.LENGTH_SHORT).show();
-                    }
+            @Override
+            public void failure(RetrofitError error) {
+                mProgressBar.setVisibility(View.GONE);
+                mContentContainer.setVisibility(View.VISIBLE);
+                mButtonRetry.setVisibility(View.VISIBLE);
 
-                    @Override
-                    public void failure(RetrofitError error) {
-                        Toast.makeText(IntroActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-
-                        mProgressBar.setVisibility(View.GONE);
-                        mContentContainer.setVisibility(View.VISIBLE);
-                        mButtonRetry.setVisibility(View.VISIBLE);
-                    }
-                });
             }
         });
     }
@@ -65,6 +66,6 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mButtonRetry.callOnClick(); //TODO : still error if CallOnClick run on emulator, but in real device blank on Android Monitor
+//        mButtonRetry.callOnClick(); //TODO : still error if CallOnClick run on emulator, but in real device blank on Android Monitor
     }
 }

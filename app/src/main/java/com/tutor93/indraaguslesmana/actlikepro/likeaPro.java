@@ -34,7 +34,7 @@ public class likeaPro extends Application {
                 .setErrorHandler(new ErrorHandler() {
                     @Override
                     public Throwable handleError(RetrofitError cause) {
-                        String errorDescription = null; //TODO : from references not like this, is just for practice
+                        String errorDescription = null; //TODO : from biyu references, not like this. is just for practice
 
                         if (cause.getKind().equals(RetrofitError.Kind.NETWORK)) {
                             errorDescription = getString(R.string.network_error);
