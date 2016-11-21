@@ -2,4 +2,6 @@
     <string name="app_name">ActLikePro</string>
     <string name="error_cannot_reach_server">Error cannot reach server</string>
     <string name="try_again">Try again</string>
+    <string name="unknown">Unknown</string>
+    <string name="network_error">Cannot establish connection to server</string>
 </resources>
