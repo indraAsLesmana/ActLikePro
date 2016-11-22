@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="registration_form_color">#000000</color>
+    <color name="splash_sign_up_button_pressed">#d62b28</color>
+    <color name="splash_sign_up_button_normal">#ec5440</color>
+    <color name="splash_text_color">#ffffff</color>
 </resources>

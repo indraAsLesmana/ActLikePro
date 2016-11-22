@@ -1,4 +1,4 @@
-package com.tutor93.indraaguslesmana.actlikepro.Model;
+package com.tutor93.indraaguslesmana.actlikepro.model;
 
 
 import com.google.gson.annotations.Expose;

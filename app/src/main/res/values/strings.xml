@@ -4,4 +4,7 @@
     <string name="try_again">Try again</string>
     <string name="unknown">Unknown</string>
     <string name="network_error">Cannot establish connection to server</string>
+    <string name="registration_form_name">full name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="splash_sign_up_facebook_button">Sign up using facebook</string>
 </resources>

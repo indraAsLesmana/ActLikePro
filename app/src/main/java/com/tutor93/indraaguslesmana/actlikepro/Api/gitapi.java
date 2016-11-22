@@ -1,6 +1,6 @@
-package com.tutor93.indraaguslesmana.actlikepro.Api;
+package com.tutor93.indraaguslesmana.actlikepro.api;
 
-import com.tutor93.indraaguslesmana.actlikepro.Model.gitmodel;
+import com.tutor93.indraaguslesmana.actlikepro.model.gitmodel;
 
 import retrofit.Callback;
 import retrofit.http.GET;

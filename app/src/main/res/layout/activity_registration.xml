@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ViewFlipper
+        android:id="@+id/registration_view_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:paddingTop="@dimen/default_toolbar_to_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/registration_form_padding"
+                android:paddingLeft="@dimen/registration_form_padding"
+                android:paddingRight="@dimen/registration_form_padding">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/registration_form_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/registration_form_name"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </ViewFlipper>
+
+</LinearLayout>

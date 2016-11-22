@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/splash_footer_padding_bottom"
+            android:paddingLeft="@dimen/splash_footer_padding"
+            android:paddingRight="@dimen/splash_footer_padding">
+
+            <com.tutor93.indraaguslesmana.actlikepro.views.BTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/selector_button_sign_up"
+                android:gravity="center"
+                android:padding="@dimen/splash_main_button_padding"
+                android:text="@string/sign_up"
+                android:textAllCaps="true"
+                android:textColor="@color/splash_text_color"
+                android:textSize="@dimen/splash_main_button_text_size" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/splash_sign_up_facebook_real_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <com.tutor93.indraaguslesmana.actlikepro.views.BTextView
+                    android:id="@+id/splash_sign_up_facebook_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/splash_sign_up_button_to_login_margin"
+                    android:background="@drawable/selector_button_sign_up"
+                    android:gravity="center"
+                    android:padding="@dimen/splash_main_button_padding"
+                    android:text="@string/splash_sign_up_facebook_button"
+                    android:textAllCaps="true"
+                    android:textColor="@color/splash_text_color"
+                    android:textSize="@dimen/splash_main_button_text_size" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

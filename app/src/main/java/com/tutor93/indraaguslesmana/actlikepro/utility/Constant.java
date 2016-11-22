@@ -10,6 +10,7 @@ public class Constant {
      * */
     public static final boolean ENABLE_LOG = false;
     public static final String APP_NAME = "Actlikepro";
+    public static final String APP_FONT_REGULAR = "fonts/Montserrat-Light.otf";
 
     /**
      *Message tag Log
