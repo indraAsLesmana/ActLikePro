@@ -15,7 +15,7 @@ import retrofit.RetrofitError;
  * Created by indraaguslesmana on 11/17/16.
  */
 
-public class LikeaPro extends Application {
+public class likeaPro extends Application {
     private static gitapi sAPIService;
     private static final String API = "https://api.github.com";
     private static Typeface sRegularFont;

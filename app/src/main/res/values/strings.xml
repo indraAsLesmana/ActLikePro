@@ -7,4 +7,5 @@
     <string name="registration_form_name">full name</string>
     <string name="sign_up">Sign Up</string>
     <string name="splash_sign_up_facebook_button">Sign up using facebook</string>
+    <string name="google_sign_up">Google Sign up</string>
 </resources>

@@ -17,6 +17,7 @@
             android:paddingRight="@dimen/splash_footer_padding">
 
             <com.tutor93.indraaguslesmana.actlikepro.views.BTextView
+                android:id="@+id/signup_classic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -27,6 +28,20 @@
                 android:textAllCaps="true"
                 android:textColor="@color/splash_text_color"
                 android:textSize="@dimen/splash_main_button_text_size" />
+
+            <com.tutor93.indraaguslesmana.actlikepro.views.BTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/selector_button_google_sign_up"
+                android:gravity="center"
+                android:padding="@dimen/splash_main_button_padding"
+                android:text="@string/google_sign_up"
+                android:textAllCaps="true"
+                android:textColor="@color/splash_text_color"
+                android:textSize="@dimen/splash_main_button_text_size"
+                android:id="@+id/signup_google"
+                />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -39,11 +54,11 @@
                     android:visibility="gone" />
 
                 <com.tutor93.indraaguslesmana.actlikepro.views.BTextView
-                    android:id="@+id/splash_sign_up_facebook_button"
+                    android:id="@+id/signup_facebook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/splash_sign_up_button_to_login_margin"
-                    android:background="@drawable/selector_button_sign_up"
+                    android:background="@drawable/selector_button_facebook"
                     android:gravity="center"
                     android:padding="@dimen/splash_main_button_padding"
                     android:text="@string/splash_sign_up_facebook_button"

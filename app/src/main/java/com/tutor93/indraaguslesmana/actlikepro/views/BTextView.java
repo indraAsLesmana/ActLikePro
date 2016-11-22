@@ -5,7 +5,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.tutor93.indraaguslesmana.actlikepro.LikeaPro;
+import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 
 /**
  * Created by rifqi on Apr 18, 2016.
@@ -30,7 +30,7 @@ public class BTextView extends TextView {
                         "http://schemas.android.com/apk/res/android", "textStyle", Typeface.NORMAL);
             }
 
-            setTypeface(LikeaPro.getRegularFont(), style);
+            setTypeface(likeaPro.getRegularFont(), style);
         }
     }
 }

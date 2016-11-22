@@ -1,7 +1,5 @@
 package com.tutor93.indraaguslesmana.actlikepro.activity;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +9,7 @@ import android.widget.Toast;
 import com.tutor93.indraaguslesmana.actlikepro.api.gitapi;
 import com.tutor93.indraaguslesmana.actlikepro.model.gitmodel;
 import com.tutor93.indraaguslesmana.actlikepro.R;
-import com.tutor93.indraaguslesmana.actlikepro.LikeaPro;
+import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -41,7 +39,7 @@ public class IntroActivity extends AppCompatActivity {
         mContentContainer.setVisibility(View.GONE);
         mButtonRetry.setVisibility(View.GONE);
 
-        LikeaPro.getService().getFeed("mojombo", new Callback<gitmodel>() {
+        likeaPro.getService().getFeed("mojombo", new Callback<gitmodel>() {
             @Override
             public void success(gitmodel gitmodel, Response response) {
                 Toast.makeText(IntroActivity.this, gitmodel.getName(), Toast.LENGTH_SHORT).show();
@@ -57,7 +55,6 @@ public class IntroActivity extends AppCompatActivity {
                 mProgressBar.setVisibility(View.GONE);
                 mContentContainer.setVisibility(View.VISIBLE);
                 mButtonRetry.setVisibility(View.VISIBLE);
-
             }
         });
     }
