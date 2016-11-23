@@ -12,4 +12,8 @@
     <dimen name="splash_footer_padding_bottom">17dp</dimen>
     <dimen name="splash_viewpager_to_indicator">24dp</dimen>
     <dimen name="splash_indicator_to_footer">32dp</dimen>
+    <dimen name="splash_viewpager_indicator_size">7dp</dimen>
+    <dimen name="splash_viewpager_text_to_pic">10dp</dimen>
+    <dimen name="splash_viewpager_text_size">16sp</dimen>
+    <dimen name="splash_viewpager_text_padding">57dp</dimen>
 </resources>

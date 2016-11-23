@@ -8,4 +8,9 @@
     <string name="sign_up">Sign Up</string>
     <string name="splash_sign_up_facebook_button">Sign up using facebook</string>
     <string name="google_sign_up">Google Sign up</string>
+    <string name="splash_viewpager_item_1">Take next step with action</string>
+    <string name="be_profesional">Be Professional</string>
+    <string name="get_ajob">Get ajob</string>
+    <string name="one_stepahead">On step a head</string>
+    <string name="weekend">Weekend</string>
 </resources>
