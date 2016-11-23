@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.facebook.FacebookSdk;
 import com.tutor93.indraaguslesmana.actlikepro.R;
+import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
 
 /**
  * Created by indraaguslesmana on 11/22/16.
@@ -27,5 +29,10 @@ public class SplashActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_splash);
+
+        View root = findViewById(android.R.id.content);
+
+
+        Helpers.useBackground(root, true);
     }
 }

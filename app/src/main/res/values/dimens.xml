@@ -10,4 +10,6 @@
     <dimen name="splash_sign_up_button_to_login_margin">47dp</dimen>
     <dimen name="splash_footer_padding">12dp</dimen>
     <dimen name="splash_footer_padding_bottom">17dp</dimen>
+    <dimen name="splash_viewpager_to_indicator">24dp</dimen>
+    <dimen name="splash_indicator_to_footer">32dp</dimen>
 </resources>
