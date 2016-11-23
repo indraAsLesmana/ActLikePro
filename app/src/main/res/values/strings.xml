@@ -1,4 +1,7 @@
 <resources>
+    <string name="facebook_app_id">1773657402882982</string>
+    <string name="fb_login_protocol_scheme">fb1773657402882982</string>
+
     <string name="app_name">ActLikePro</string>
     <string name="error_cannot_reach_server">Error cannot reach server</string>
     <string name="try_again">Try again</string>

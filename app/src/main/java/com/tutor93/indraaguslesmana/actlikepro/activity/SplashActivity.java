@@ -9,7 +9,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.widget.LoginButton;
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.adapter.SplashPagerAdapter;
 import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
@@ -20,6 +23,8 @@ import com.viewpagerindicator.PageIndicator;
  */
 
 public class SplashActivity extends AppCompatActivity{
+    private CallbackManager mFBCallbackManager;
+    private LoginButton mBtnRealFB;
 
     public static void start(Activity caller) {
         Intent intent = new Intent(caller, SplashActivity.class);
@@ -32,6 +37,7 @@ public class SplashActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
+        mFBCallbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_splash);
 
         SplashPagerAdapter pagerAdapter = new SplashPagerAdapter(getSupportFragmentManager());
@@ -39,6 +45,8 @@ public class SplashActivity extends AppCompatActivity{
         View root = findViewById(android.R.id.content);
         ViewPager viewPager = (ViewPager)findViewById(R.id.splash_viewpager);
         PageIndicator pageIndicator = (PageIndicator)findViewById(R.id.splash_viewpager_indicator);
+        View btnSignUpFacebook = findViewById(R.id.signup_facebook);
+        mBtnRealFB = (LoginButton)findViewById(R.id.splash_sign_up_facebook_real_button);
 
         if(viewPager != null) {
             viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
@@ -66,6 +74,18 @@ public class SplashActivity extends AppCompatActivity{
 
         if(pageIndicator != null) {
             pageIndicator.setViewPager(viewPager);
+        }
+
+        if(btnSignUpFacebook != null) {
+            btnSignUpFacebook.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mBtnRealFB != null) {
+                        LoginManager.getInstance().logOut();
+                        mBtnRealFB.performClick();
+                    }
+                }
+            });
         }
 
         Helpers.useBackground(root, true);

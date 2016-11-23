@@ -62,6 +62,6 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mButtonRetry.callOnClick(); //TODO : still error if CallOnClick run on emulator, but in real device blank on Android Monitor
+        mButtonRetry.callOnClick();
     }
 }
