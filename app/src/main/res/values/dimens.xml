@@ -16,4 +16,5 @@
     <dimen name="splash_viewpager_text_to_pic">10dp</dimen>
     <dimen name="splash_viewpager_text_size">16sp</dimen>
     <dimen name="splash_viewpager_text_padding">57dp</dimen>
+    <dimen name="registration_success">24sp</dimen>
 </resources>

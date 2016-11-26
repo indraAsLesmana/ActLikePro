@@ -16,5 +16,6 @@ public class Constant {
      *Message tag Log
      */
     public static final String TAG_LOG_ERROR = APP_NAME + "_error";
+    public static final String[] FACEBOOK_READ_PERMISSIONS = { "public_profile", "email", "user_birthday" };
 
 }

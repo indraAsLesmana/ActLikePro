@@ -3,8 +3,6 @@ package com.tutor93.indraaguslesmana.actlikepro.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,10 +32,9 @@ public class SplashActivity extends AppCompatActivity{
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
-        mFBCallbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_splash);
 
         SplashPagerAdapter pagerAdapter = new SplashPagerAdapter(getSupportFragmentManager());
@@ -46,6 +43,7 @@ public class SplashActivity extends AppCompatActivity{
         ViewPager viewPager = (ViewPager)findViewById(R.id.splash_viewpager);
         PageIndicator pageIndicator = (PageIndicator)findViewById(R.id.splash_viewpager_indicator);
         View btnSignUpFacebook = findViewById(R.id.signup_facebook);
+        View btnSignUp = findViewById(R.id.signup_classic);
         mBtnRealFB = (LoginButton)findViewById(R.id.splash_sign_up_facebook_real_button);
 
         if(viewPager != null) {
@@ -87,6 +85,16 @@ public class SplashActivity extends AppCompatActivity{
                 }
             });
         }
+
+        if(btnSignUp != null){
+            btnSignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    RegistrationActivity.start(SplashActivity.this);
+                }
+            });
+        }
+
 
         Helpers.useBackground(root, true);
     }

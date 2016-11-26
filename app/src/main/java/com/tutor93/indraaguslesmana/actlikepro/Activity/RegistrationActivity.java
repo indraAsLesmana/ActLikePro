@@ -18,6 +18,10 @@ public class RegistrationActivity extends AppCompatActivity{
     private static final String EXTRA_PRE_USER = "RegistrationActivity::mPreFilledUser";
     private AuthResponse.FacebookUser mPreFilledUser;
 
+    public static void start(Activity caller) {
+        start(caller, false, null);
+    }
+
     public static void start(Activity caller, boolean shouldFinish, AuthResponse.FacebookUser user) {
         Intent intent = new Intent(caller, RegistrationActivity.class);
         if(user != null) intent.putExtra(EXTRA_PRE_USER, user);

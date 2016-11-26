@@ -16,4 +16,6 @@
     <string name="get_ajob">Get ajob</string>
     <string name="one_stepahead">On step a head</string>
     <string name="weekend">Weekend</string>
+    <string name="registration_form_mail">e-mail</string>
+    <string name="registration_success">Registration Success</string>
 </resources>
