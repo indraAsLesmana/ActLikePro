@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ViewFlipper;
 
 import com.tutor93.indraaguslesmana.actlikepro.R;
@@ -64,5 +65,13 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onResume();
         mViewFlipper.setDisplayedChild(DISPLAY_FORM_REGISTRATION);
         Helpers.hideSoftKeyboard(getCurrentFocus()); // TODO : keyboard still viewed, on form registration starting view.
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
