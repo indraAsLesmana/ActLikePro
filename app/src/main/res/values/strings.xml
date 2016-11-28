@@ -18,4 +18,13 @@
     <string name="weekend">Weekend</string>
     <string name="registration_form_mail">e-mail</string>
     <string name="registration_success">Registration Success</string>
+    <string name="title_activity_main_drawer">Home</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="progress_title_default">Please Wait...</string>
+    <string name="progress_body_login">Logging in...</string>
+    <string name="im_agree_with_signup">Im agree with term and condition after Sign up button click</string>
 </resources>

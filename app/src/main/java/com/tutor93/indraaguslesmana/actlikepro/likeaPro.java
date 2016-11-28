@@ -21,6 +21,12 @@ public class likeaPro extends Application {
     private static Typeface sRegularFont;
     private static Typeface sBoldFont;
 
+    public static void log(String message, Throwable throwable) {
+        if(Constant.ENABLE_LOG) {
+            Log.v(Constant.TAG_LOG_VERBOSE, message, throwable);
+        }
+    }
+
     public static void logError(String message, Throwable throwable) {
         if (Constant.ENABLE_LOG) {
             Log.e(Constant.TAG_LOG_ERROR, message, throwable);

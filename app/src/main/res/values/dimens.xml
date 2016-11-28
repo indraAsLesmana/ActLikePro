@@ -17,4 +17,15 @@
     <dimen name="splash_viewpager_text_size">16sp</dimen>
     <dimen name="splash_viewpager_text_padding">57dp</dimen>
     <dimen name="registration_success">24sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="toolbar_elevation">5dp</dimen>
+    <dimen name="default_content_padding">16dp</dimen>
+    <dimen name="registration_form_submit_text_size">14sp</dimen>
+    <dimen name="toolbar_button_padding_hi">16.5dp</dimen>
+    <dimen name="toolbar_button_padding_lo">7dp</dimen>
+    <dimen name="registration_form_notice">14dp</dimen>
+
 </resources>

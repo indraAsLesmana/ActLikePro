@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:elevation="@dimen/toolbar_elevation"
+    app:theme="?attr/customToolbarStyle"
+    >
+
+    <ImageView
+        android:id="@+id/toolbar_centered_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <com.tutor93.indraaguslesmana.actlikepro.views.BTextView
+        android:id="@+id/toolbar_right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/default_content_padding"
+        android:background="@drawable/selector_button_sign_up_bordered"
+        android:gravity="center"
+        android:paddingBottom="@dimen/toolbar_button_padding_lo"
+        android:paddingLeft="@dimen/toolbar_button_padding_hi"
+        android:paddingRight="@dimen/toolbar_button_padding_hi"
+        android:paddingTop="@dimen/toolbar_button_padding_lo"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/registration_form_submit_text_size"
+        android:visibility="gone"
+        app:theme="@style/ToolbarColoredBackArrow" />
+
+</android.support.v7.widget.Toolbar>

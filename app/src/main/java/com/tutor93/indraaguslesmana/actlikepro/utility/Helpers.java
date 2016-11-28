@@ -1,6 +1,9 @@
 package com.tutor93.indraaguslesmana.actlikepro.utility;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -11,6 +14,8 @@ import com.tutor93.indraaguslesmana.actlikepro.R;
  */
 
 public class Helpers {
+
+    private static ProgressDialog sProgressDialog;
 
     /**
      * Show image background on activity or fragment root image
@@ -33,5 +38,29 @@ public class Helpers {
                     .fitCenter()
                     .into(background);
         }
+    }
+
+    /**
+     * Show progress dialog, can only be called once per tier (show-hide)
+     */
+    public static void showProgressDialog(Context ctx, int bodyStringId) {
+        if(sProgressDialog == null) {
+            sProgressDialog = ProgressDialog.show(ctx,
+                    ctx.getString(R.string.progress_title_default),
+                    ctx.getString(bodyStringId), true, false, null);
+        }
+    }
+
+    /**
+     * Show soft keyboard for given view
+     */
+    public static void hideSoftKeyboard(View view) {
+        if(view == null) {
+            return;
+        }
+
+        InputMethodManager imm = (InputMethodManager)
+                view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

@@ -8,14 +8,18 @@ public class Constant {
     /**
      * Application Configuration
      * */
-    public static final boolean ENABLE_LOG = false;
+    public static final boolean ENABLE_LOG = true;
     public static final String APP_NAME = "Actlikepro";
     public static final String APP_FONT_REGULAR = "fonts/Montserrat-Light.otf";
 
-    /**
-     *Message tag Log
-     */
-    public static final String TAG_LOG_ERROR = APP_NAME + "_error";
+
     public static final String[] FACEBOOK_READ_PERMISSIONS = { "public_profile", "email", "user_birthday" };
+
+    /**
+     * Message log tag
+     */
+    public static final String TAG_LOG_API = APP_NAME + "_api";
+    public static final String TAG_LOG_VERBOSE = APP_NAME + "_verbose";
+    public static final String TAG_LOG_ERROR = APP_NAME + "_error";
 
 }
