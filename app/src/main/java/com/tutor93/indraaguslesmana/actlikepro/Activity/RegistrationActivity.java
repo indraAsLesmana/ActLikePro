@@ -3,21 +3,33 @@ package com.tutor93.indraaguslesmana.actlikepro.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Patterns;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.api.AuthResponse;
 import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by indraaguslesmana on 11/22/16.
  */
 
 public class RegistrationActivity extends AppCompatActivity {
+
+    private TextInputLayout mNameLayout;
+    private TextInputLayout mEmailLayout;
 
     private static final int DISPLAY_SUCCESS_MESSAGE = 0;
     private static final int DISPLAY_FORM_REGISTRATION = 1;
@@ -26,6 +38,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private static final String EXTRA_PRE_USER = "RegistrationActivity::mPreFilledUser";
     private AuthResponse.FacebookUser mPreFilledUser;
+    private EditText mName;
+    private EditText mEmail;
 
     public static void start(Activity caller) {
         start(caller, false, null);
@@ -57,14 +71,31 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         mViewFlipper = (ViewFlipper) findViewById(R.id.registration_view_flipper);
+        TextView btnSignup = (TextView)findViewById(R.id.registration_signup);
+        mNameLayout = (TextInputLayout) findViewById(R.id.registration_form_name);
+        mEmailLayout = (TextInputLayout) findViewById(R.id.registration_form_mail);
 
+        setupForm();
+
+        if(btnSignup != null){
+            btnSignup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(checValidity()){
+                        mViewFlipper.setDisplayedChild(DISPLAY_SUCCESS_MESSAGE);
+                        Helpers.hideSoftKeyboard(getCurrentFocus());
+                    }
+
+                }
+            });
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mViewFlipper.setDisplayedChild(DISPLAY_FORM_REGISTRATION);
-        Helpers.hideSoftKeyboard(getCurrentFocus()); // TODO : keyboard still viewed, on form registration starting view.
+        Helpers.hideSoftKeyboard(getCurrentFocus()); // TODO : on starting, keyboard always showed. becouse getCurrentfFokus return null
     }
 
     @Override
@@ -73,5 +104,42 @@ public class RegistrationActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+    private boolean checValidity() {
+        if (mName.getText().toString().isEmpty()) {
+            putError(mNameLayout, R.string.please_input_name);
+            return false;
+        } else {
+            clearError(mNameLayout);
+        }
+
+        if (mEmail.getText().toString().isEmpty()) {
+            putError(mEmailLayout, R.string.please_input_mail);
+            return false;
+        } else {
+            if (!Patterns.EMAIL_ADDRESS.matcher(mEmail.getText().toString()).matches()) {
+                putError(mEmailLayout, R.string.invalid_email_address);
+                return false;
+            }
+            clearError(mEmailLayout);
+        }
+        return true;
+    }
+
+    private void setupForm(){
+        mName = mNameLayout.getEditText();
+        mEmail = mEmailLayout.getEditText();
+    }
+
+    // helper to display error message on TextInputLayout
+    private void putError(TextInputLayout view, int stringRes) {
+        view.setErrorEnabled(true);
+        view.setError(getString(stringRes));
+        view.requestFocus();
+    }
+
+    // helper to clear error message on TextInputLayout
+    private void clearError(TextInputLayout view) {
+        view.setErrorEnabled(false);
     }
 }

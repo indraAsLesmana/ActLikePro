@@ -27,4 +27,8 @@
     <string name="progress_title_default">Please Wait...</string>
     <string name="progress_body_login">Logging in...</string>
     <string name="im_agree_with_signup">Im agree with term and condition after Sign up button click</string>
+    <string name="sign_up_finish">Sign up finish</string>
+    <string name="please_input_name">Please input your name</string>
+    <string name="please_input_mail">Please input your mail</string>
+    <string name="invalid_email_address">Invalid email address</string>
 </resources>
