@@ -31,4 +31,6 @@
     <string name="please_input_name">Please input your name</string>
     <string name="please_input_mail">Please input your mail</string>
     <string name="invalid_email_address">Invalid email address</string>
+    <string name="login_success">Login Success</string>
+    <string name="login_failed">Login Failed</string>
 </resources>

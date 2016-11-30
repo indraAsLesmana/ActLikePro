@@ -10,17 +10,19 @@ import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.api.AuthResponse;
+import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
+import com.tutor93.indraaguslesmana.actlikepro.model.gitmodel;
 import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
 
-import org.w3c.dom.Text;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by indraaguslesmana on 11/22/16.
@@ -40,6 +42,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private AuthResponse.FacebookUser mPreFilledUser;
     private EditText mName;
     private EditText mEmail;
+    private TextView mBtnSignUp;
+    private TextView mRgsMessage;
 
     public static void start(Activity caller) {
         start(caller, false, null);
@@ -71,18 +75,19 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         mViewFlipper = (ViewFlipper) findViewById(R.id.registration_view_flipper);
-        TextView btnSignup = (TextView)findViewById(R.id.registration_signup);
+        mBtnSignUp = (TextView)findViewById(R.id.registration_signup);
         mNameLayout = (TextInputLayout) findViewById(R.id.registration_form_name);
         mEmailLayout = (TextInputLayout) findViewById(R.id.registration_form_mail);
+        mRgsMessage = (TextView) findViewById(R.id.registration_message);
 
         setupForm();
 
-        if(btnSignup != null){
-            btnSignup.setOnClickListener(new View.OnClickListener() {
+        if (mBtnSignUp != null) {
+            mBtnSignUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(checValidity()){
-                        mViewFlipper.setDisplayedChild(DISPLAY_SUCCESS_MESSAGE);
+                    if (checValidity()) {
+                        sendDataToAPI();
                         Helpers.hideSoftKeyboard(getCurrentFocus());
                     }
 
@@ -141,5 +146,34 @@ public class RegistrationActivity extends AppCompatActivity {
     // helper to clear error message on TextInputLayout
     private void clearError(TextInputLayout view) {
         view.setErrorEnabled(false);
+    }
+
+    private void sendDataToAPI() {
+        likeaPro.getService().getFeed("ivey", new Callback<gitmodel>() {
+            @Override
+            public void success(gitmodel gitmodel, Response response) {
+
+                // hide back button on toolbar
+                if(getSupportActionBar() != null) {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    getSupportActionBar().setDisplayShowHomeEnabled(false);
+                }
+
+                String mUsername = mName.getText().toString();
+
+                if (mUsername.equalsIgnoreCase(gitmodel.getLogin())){
+                    mRgsMessage.setText(R.string.login_success);
+                    mViewFlipper.setDisplayedChild(DISPLAY_SUCCESS_MESSAGE);
+                }else {
+                    mRgsMessage.setText(R.string.login_failed);
+                    mViewFlipper.setDisplayedChild(DISPLAY_SUCCESS_MESSAGE);
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Helpers.showToast(RegistrationActivity.this, error.getMessage(), true);
+            }
+        });
     }
 }

@@ -37,7 +37,7 @@
         <activity
             android:name=".activity.RegistrationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.SplashScreen" />
+            android:theme="@style/AppTheme.RegistrationActivity"/>
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"

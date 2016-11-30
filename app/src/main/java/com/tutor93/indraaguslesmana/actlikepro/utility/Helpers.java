@@ -2,12 +2,19 @@ package com.tutor93.indraaguslesmana.actlikepro.utility;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Typeface;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tutor93.indraaguslesmana.actlikepro.R;
+import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 
 /**
  * Created by indraaguslesmana on 11/23/16.
@@ -62,5 +69,26 @@ public class Helpers {
         InputMethodManager imm = (InputMethodManager)
                 view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    /**
+     * Show toast from string
+     */
+    public static void showToast(Context ctx, String str, boolean needLong) {
+        Toast toast = Toast.makeText(ctx, str, needLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT);
+        initToast(ctx, toast);
+        toast.show();
+    }
+
+    /**
+     * This internal function to reduce redundancy showToast function
+     */
+    private static void initToast(Context context, Toast toast) {
+        ViewGroup toastLayout = (ViewGroup)toast.getView();
+        TextView toastTextView = (TextView)toastLayout.getChildAt(0);
+        float textSize = context.getResources().getDimension(R.dimen.toast_text_size);
+        toastTextView.setTypeface(likeaPro.getRegularFont());
+        toastTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        toastTextView.setGravity(Gravity.CENTER);
     }
 }

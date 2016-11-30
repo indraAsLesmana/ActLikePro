@@ -1,11 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="customToolbarStyle">@style/ToolbarTheme</item>
     </style>
 
     <style name="AppTheme.SplashScreen">
@@ -22,19 +22,29 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Registration form textInputLayout-->
-    <style name="TextLabel" parent="TextAppearance.AppCompat">
-        <!-- Hint color and label color in FALSE state -->
-        <item name="android:textColorHint">@color/registration_form_color</item>
-        <item name="android:textSize">20sp</item>
-        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
-        <item name="colorAccent">@color/registration_form_color</item>
-        <item name="colorControlNormal">@color/registration_form_color</item>
-        <item name="colorControlActivated">@color/registration_form_color</item>
-    </style>
-
     <style name="ToolbarColoredBackArrow" parent="AppTheme">
         <item name="android:textColorSecondary">@color/registration_form_color</item>
+    </style>
+
+    <style name="AppTheme.RegistrationActivity" parent="AppTheme">
+        <item name="colorControlNormal">@color/registration_form_color_normal</item>
+        <item name="colorControlActivated">@color/registration_form_color</item>
+        <item name="colorControlHighlight">@color/registration_form_color</item>
+        <item name="android:textColorHint">@color/registration_form_color_normal</item>
+        <item name="customToolbarStyle">@style/ToolbarTheme</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/default_red</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/default_white</item>
+        <item name="actionMenuTextColor">@color/default_white</item>
+        <item name="android:textColorSecondary">@color/default_white</item>
     </style>
 
 </resources>

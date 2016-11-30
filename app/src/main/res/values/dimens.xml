@@ -27,5 +27,6 @@
     <dimen name="toolbar_button_padding_hi">16.5dp</dimen>
     <dimen name="toolbar_button_padding_lo">7dp</dimen>
     <dimen name="registration_form_notice">14dp</dimen>
+    <dimen name="toast_text_size">12sp</dimen>
 
 </resources>

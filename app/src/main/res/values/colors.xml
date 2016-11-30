@@ -16,4 +16,12 @@
     <color name="registration_sign_up_button_normal">#ffffff</color>
     <color name="secondary_background">#eceff0</color>
     <color name="registration_sign_up_button_pressed">#f0f0f0</color>
+
+    //default color chooser
+    <color name="default_white">#ffffff</color>
+    <color name="main_tab_indicator">#ffffff</color>
+    <color name="default_red">#d34836</color>
+    <color name="default_text_color">#717171</color>
+    <color name="registration_form_color_normal">#77ffffff</color>
+
 </resources>
