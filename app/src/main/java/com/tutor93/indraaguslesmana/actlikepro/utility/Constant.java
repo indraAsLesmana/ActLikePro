@@ -22,4 +22,9 @@ public class Constant {
     public static final String TAG_LOG_VERBOSE = APP_NAME + "_verbose";
     public static final String TAG_LOG_ERROR = APP_NAME + "_error";
 
+    /**
+     * Preferences constants
+     */
+    public static String PREFERENCE_USER_NAME = "p_user_name";
+    public static String PREFERENCE_USER_EMAIL = "p_user_email";
 }

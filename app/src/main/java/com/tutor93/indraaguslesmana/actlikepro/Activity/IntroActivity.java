@@ -42,7 +42,6 @@ public class IntroActivity extends AppCompatActivity {
         likeaPro.getService().getFeed("mojombo", new Callback<gitmodel>() {
             @Override
             public void success(gitmodel gitmodel, Response response) {
-                Toast.makeText(IntroActivity.this, gitmodel.getName(), Toast.LENGTH_SHORT).show();
                 if (!gitmodel.getName().isEmpty()){
                     SplashActivity.start(IntroActivity.this);
                 }else {

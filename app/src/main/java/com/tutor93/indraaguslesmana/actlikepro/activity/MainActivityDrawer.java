@@ -1,9 +1,10 @@
 package com.tutor93.indraaguslesmana.actlikepro.activity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,11 +13,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.tutor93.indraaguslesmana.actlikepro.R;
+import com.tutor93.indraaguslesmana.actlikepro.model.gitmodel;
+import com.tutor93.indraaguslesmana.actlikepro.utility.Constant;
 
 public class MainActivityDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private gitmodel userData;
+    private TextView userName;
+    private TextView userMail;
+    private ImageView userImage;
+    private SharedPreferences sharedpreferences;
+
+    public static void start(Activity caller) {
+        Intent intent = new Intent(caller, MainActivityDrawer.class);
+        caller.startActivity(intent);
+        caller.finish();
+        caller.overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_from_left);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +44,11 @@ public class MainActivityDrawer extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        userData = new gitmodel();
+        userName = (TextView) findViewById(R.id.nav_username);
+        userMail = (TextView) findViewById(R.id.nav_usermail);
+        userImage = (ImageView) findViewById(R.id.nav_imageprofile);
+        sharedpreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -33,6 +56,8 @@ public class MainActivityDrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        loadUser();
     }
 
     @Override
@@ -90,5 +115,10 @@ public class MainActivityDrawer extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void loadUser(){
+        userName.setText(sharedpreferences.getString(Constant.PREFERENCE_USER_NAME, ""));
+        userMail.setText(sharedpreferences.getString(Constant.PREFERENCE_USER_EMAIL, ""));
     }
 }

@@ -1,6 +1,8 @@
 package com.tutor93.indraaguslesmana.actlikepro;
 
 import android.app.Application;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.util.Log;
 
@@ -16,10 +18,12 @@ import retrofit.RetrofitError;
  */
 
 public class likeaPro extends Application {
+    private static likeaPro sInstance;
     private static gitapi sAPIService;
     private static final String API = "https://api.github.com";
     private static Typeface sRegularFont;
     private static Typeface sBoldFont;
+    private static SharedPreferences sPreferences;
 
     public static void log(String message, Throwable throwable) {
         if(Constant.ENABLE_LOG) {
@@ -36,9 +40,19 @@ public class likeaPro extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance = this;
 
         sRegularFont = Typeface.createFromAsset(getAssets(), Constant.APP_FONT_REGULAR);
         sBoldFont = Typeface.create(sRegularFont, Typeface.BOLD);
+        sPreferences = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+
+    }
+
+    public static void setUserSession (String userName, String userEmail){
+        SharedPreferences.Editor editor = sPreferences.edit();
+        editor.putString(Constant.PREFERENCE_USER_NAME, userName);
+        editor.putString(Constant.PREFERENCE_USER_EMAIL, userEmail);
+        editor.apply();
     }
 
     public static gitapi getService() {
@@ -69,11 +83,30 @@ public class likeaPro extends Application {
         return sAPIService;
     };
 
+    public static likeaPro getInstance() {
+        return sInstance;
+    }
+
     public static Typeface getRegularFont() {
         return sRegularFont;
     }
 
     public static Typeface getBoldFont() {
         return sBoldFont;
+    }
+
+    public static String getUsername (){
+        return sPreferences.getString(Constant.PREFERENCE_USER_NAME, "");
+    }
+    public static String getUsermail (){
+        return sPreferences.getString(Constant.PREFERENCE_USER_EMAIL, "");
+    }
+
+    private void relaunchApplication() {
+        Application application = likeaPro.getInstance();
+        Intent intent = application.getPackageManager()
+                .getLaunchIntentForPackage(application.getPackageName());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        application.startActivity(intent);
     }
 }

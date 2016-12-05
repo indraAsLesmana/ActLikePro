@@ -4,7 +4,9 @@ package com.tutor93.indraaguslesmana.actlikepro.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class gitmodel {
+import java.io.Serializable;
+
+public class gitmodel{
 
 //I created this using http://www.jsonschema2pojo.org/
 //Note that not every model can be created using jsonschema2pojo
@@ -87,24 +89,36 @@ public class gitmodel {
     @Expose
     private String updatedAt;
 
+    public gitmodel() {
+        this.name = getName();
+        this.email = getEmail();
+        this.avatarUrl = getAvatarUrl();
+    }
+
     public String getLogin() {
         return login;
     }
+
     public void setLogin(String login) {
         this.login = login;
     }
+
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getAvatarUrl() {
         return avatarUrl;
     }
+
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
+
     public String getGravatarId() {
         return gravatarId;
     }
@@ -112,12 +126,15 @@ public class gitmodel {
     public void setGravatarId(String gravatarId) {
         this.gravatarId = gravatarId;
     }
+
     public String getUrl() {
         return url;
     }
+
     public void setUrl(String url) {
         this.url = url;
     }
+
     public String getHtmlUrl() {
         return htmlUrl;
     }
@@ -223,117 +240,91 @@ public class gitmodel {
     }
 
     /**
-     *
-     * @return
-     * The company
+     * @return The company
      */
     public String getCompany() {
         return company;
     }
 
     /**
-     *
-     * @param company
-     * The company
+     * @param company The company
      */
     public void setCompany(String company) {
         this.company = company;
     }
 
     /**
-     *
-     * @return
-     * The blog
+     * @return The blog
      */
     public String getBlog() {
         return blog;
     }
 
     /**
-     *
-     * @param blog
-     * The blog
+     * @param blog The blog
      */
     public void setBlog(String blog) {
         this.blog = blog;
     }
 
     /**
-     *
-     * @return
-     * The location
+     * @return The location
      */
     public String getLocation() {
         return location;
     }
 
     /**
-     *
-     * @param location
-     * The location
+     * @param location The location
      */
     public void setLocation(String location) {
         this.location = location;
     }
 
     /**
-     *
-     * @return
-     * The email
+     * @return The email
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     *
-     * @param email
-     * The email
+     * @param email The email
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     *
-     * @return
-     * The hireable
+     * @return The hireable
      */
     public Boolean getHireable() {
         return hireable;
     }
 
     /**
-     *
-     * @param hireable
-     * The hireable
+     * @param hireable The hireable
      */
     public void setHireable(Boolean hireable) {
         this.hireable = hireable;
     }
 
     /**
-     *
-     * @return
-     * The bio
+     * @return The bio
      */
     public Object getBio() {
         return bio;
     }
 
     /**
-     *
-     * @param bio
-     * The bio
+     * @param bio The bio
      */
     public void setBio(Object bio) {
         this.bio = bio;
     }
 
     /**
-     *
-     * @return
-     * The publicRepos
+     * @return The publicRepos
      */
     public Integer getPublicRepos() {
         return publicRepos;
@@ -343,87 +334,69 @@ public class gitmodel {
         this.publicRepos = publicRepos;
     }
 
-   
+
     public Integer getPublicGists() {
         return publicGists;
     }
 
     /**
-     *
-     * @param publicGists
-     * The public_gists
+     * @param publicGists The public_gists
      */
     public void setPublicGists(Integer publicGists) {
         this.publicGists = publicGists;
     }
 
     /**
-     *
-     * @return
-     * The followers
+     * @return The followers
      */
     public Integer getFollowers() {
         return followers;
     }
 
     /**
-     *
-     * @param followers
-     * The followers
+     * @param followers The followers
      */
     public void setFollowers(Integer followers) {
         this.followers = followers;
     }
 
     /**
-     *
-     * @return
-     * The following
+     * @return The following
      */
     public Integer getFollowing() {
         return following;
     }
 
     /**
-     *
-     * @param following
-     * The following
+     * @param following The following
      */
     public void setFollowing(Integer following) {
         this.following = following;
     }
 
     /**
-     *
-     * @return
-     * The createdAt
+     * @return The createdAt
      */
     public String getCreatedAt() {
         return createdAt;
     }
 
     /**
-     *
-     * @param createdAt
-     * The created_at
+     * @param createdAt The created_at
      */
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
     /**
-     *
-     * @return
-     * The updatedAt
+     * @return The updatedAt
      */
     public String getUpdatedAt() {
         return updatedAt;
     }
 
     /**
-     *
-     * @param updatedAt
-     * The updated_at
+     * @param updatedAt The updated_at
      */
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;

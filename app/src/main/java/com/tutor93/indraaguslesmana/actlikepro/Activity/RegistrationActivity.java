@@ -16,10 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.tutor93.indraaguslesmana.actlikepro.MainActivity;
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.api.AuthResponse;
 import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 import com.tutor93.indraaguslesmana.actlikepro.model.gitmodel;
+import com.tutor93.indraaguslesmana.actlikepro.utility.Constant;
 import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
 
 import retrofit.Callback;
@@ -168,9 +170,13 @@ public class RegistrationActivity extends AppCompatActivity {
                 if(getSupportActionBar() != null) {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                     getSupportActionBar().setDisplayShowHomeEnabled(false);
+
                 }
 
                 String mUsername = mName.getText().toString();
+                String mUsermail = gitmodel.getEmail().toString();
+//                likeaPro.setUserSession("ivey", "ivey@gweezlebur.com");
+                likeaPro.setUserSession(mUsername, mUsermail);
 
                 if (mUsername.equalsIgnoreCase(gitmodel.getLogin())){
                     mRgsMessage.setText(R.string.login_success);
@@ -179,9 +185,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() { // make delay to next activity.
                         @Override
                         public void run() {
-                            Toast.makeText(RegistrationActivity.this, "Waiting, for 3 second", Toast.LENGTH_SHORT).show();
                         }
+
                     }, 3000);
+
+                    MainActivityDrawer.start(RegistrationActivity.this);
 
                 }else {
                     mRgsMessage.setText(R.string.login_failed);
