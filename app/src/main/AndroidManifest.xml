@@ -37,7 +37,8 @@
         <activity
             android:name=".activity.RegistrationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.RegistrationActivity"/>
+            android:theme="@style/AppTheme.RegistrationActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -47,14 +48,18 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
 
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
         <activity
             android:name=".activity.MainActivityDrawer"
             android:label="@string/title_activity_main_drawer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="2630ba93b2715194030f5a9c9519ad4f8f799148" />
     </application>
 
 </manifest>

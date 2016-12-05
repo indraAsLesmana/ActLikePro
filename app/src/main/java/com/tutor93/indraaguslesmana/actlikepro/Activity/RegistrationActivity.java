@@ -3,6 +3,7 @@ package com.tutor93.indraaguslesmana.actlikepro.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.tutor93.indraaguslesmana.actlikepro.R;
@@ -44,6 +46,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText mEmail;
     private TextView mBtnSignUp;
     private TextView mRgsMessage;
+    private Toolbar toolbar;
 
     public static void start(Activity caller) {
         start(caller, false, null);
@@ -62,11 +65,8 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        if(toolbar != null) {
-            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.color_secondary));
-            setSupportActionBar(toolbar);
-        }
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setToolbar();
 
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -79,6 +79,11 @@ public class RegistrationActivity extends AppCompatActivity {
         mNameLayout = (TextInputLayout) findViewById(R.id.registration_form_name);
         mEmailLayout = (TextInputLayout) findViewById(R.id.registration_form_mail);
         mRgsMessage = (TextView) findViewById(R.id.registration_message);
+        final View rootView = getWindow().getDecorView().getRootView();
+
+        //setup animate for view vlipper
+        mViewFlipper.setInAnimation(this, R.anim.slide_in_from_left);
+        mViewFlipper.setOutAnimation(this, R.anim.slide_out_from_left);
 
         setupForm();
 
@@ -88,7 +93,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     if (checValidity()) {
                         sendDataToAPI();
-                        Helpers.hideSoftKeyboard(getCurrentFocus());
+                        Helpers.hideSoftKeyboard(rootView);
                     }
 
                 }
@@ -100,7 +105,6 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mViewFlipper.setDisplayedChild(DISPLAY_FORM_REGISTRATION);
-        Helpers.hideSoftKeyboard(getCurrentFocus()); // TODO : on starting, keyboard always showed. becouse getCurrentfFokus return null
     }
 
     @Override
@@ -110,6 +114,13 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_from_right);
+    }
+
     private boolean checValidity() {
         if (mName.getText().toString().isEmpty()) {
             putError(mNameLayout, R.string.please_input_name);
@@ -164,9 +175,25 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (mUsername.equalsIgnoreCase(gitmodel.getLogin())){
                     mRgsMessage.setText(R.string.login_success);
                     mViewFlipper.setDisplayedChild(DISPLAY_SUCCESS_MESSAGE);
+
+                    new Handler().postDelayed(new Runnable() { // make delay to next activity.
+                        @Override
+                        public void run() {
+                            Toast.makeText(RegistrationActivity.this, "Waiting, for 3 second", Toast.LENGTH_SHORT).show();
+                        }
+                    }, 3000);
+
                 }else {
                     mRgsMessage.setText(R.string.login_failed);
                     mViewFlipper.setDisplayedChild(DISPLAY_SUCCESS_MESSAGE);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                           mViewFlipper.setDisplayedChild(1);
+                            setToolbar();
+                        }
+                    }, 1500);
                 }
             }
 
@@ -176,4 +203,12 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void setToolbar() {
+        if(toolbar != null) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.color_secondary));
+            setSupportActionBar(toolbar);
+        }
+    }
+
 }
