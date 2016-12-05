@@ -15,15 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tutor93.indraaguslesmana.actlikepro.R;
+import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 import com.tutor93.indraaguslesmana.actlikepro.model.gitmodel;
-import com.tutor93.indraaguslesmana.actlikepro.utility.Constant;
 
 public class MainActivityDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private gitmodel userData;
     private TextView userName;
     private TextView userMail;
     private ImageView userImage;
@@ -44,9 +44,9 @@ public class MainActivityDrawer extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        userData = new gitmodel();
-        userName = (TextView) findViewById(R.id.nav_username);
-        userMail = (TextView) findViewById(R.id.nav_usermail);
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        userName = (TextView) navView.getHeaderView(0).findViewById(R.id.nav_username);
+        userMail = (TextView) navView.getHeaderView(0).findViewById(R.id.nav_usermail);
         userImage = (ImageView) findViewById(R.id.nav_imageprofile);
         sharedpreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -118,7 +118,7 @@ public class MainActivityDrawer extends AppCompatActivity
     }
 
     private void loadUser(){
-        userName.setText(sharedpreferences.getString(Constant.PREFERENCE_USER_NAME, ""));
-        userMail.setText(sharedpreferences.getString(Constant.PREFERENCE_USER_EMAIL, ""));
+        userName.setText(likeaPro.getUsername().toString());
+        userMail.setText(likeaPro.getUsermail().toString());
     }
 }

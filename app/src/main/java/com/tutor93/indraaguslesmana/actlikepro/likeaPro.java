@@ -96,10 +96,10 @@ public class likeaPro extends Application {
     }
 
     public static String getUsername (){
-        return sPreferences.getString(Constant.PREFERENCE_USER_NAME, "");
+        return sPreferences.getString(Constant.PREFERENCE_USER_NAME, null);
     }
     public static String getUsermail (){
-        return sPreferences.getString(Constant.PREFERENCE_USER_EMAIL, "");
+        return sPreferences.getString(Constant.PREFERENCE_USER_EMAIL, null);
     }
 
     private void relaunchApplication() {
