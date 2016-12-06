@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.tutor93.indraaguslesmana.actlikepro.MainActivity;
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;

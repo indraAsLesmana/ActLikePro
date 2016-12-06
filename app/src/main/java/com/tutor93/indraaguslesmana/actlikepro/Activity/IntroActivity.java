@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.tutor93.indraaguslesmana.actlikepro.MainActivity;
 import com.tutor93.indraaguslesmana.actlikepro.api.gitapi;
 import com.tutor93.indraaguslesmana.actlikepro.model.gitmodel;
 import com.tutor93.indraaguslesmana.actlikepro.R;
@@ -35,25 +36,29 @@ public class IntroActivity extends AppCompatActivity {
         mContentContainer = findViewById(R.id.intro_notification_container);
         mButtonRetry = findViewById(R.id.intro_retry_button);
 
-        mProgressBar.setVisibility(View.VISIBLE);
-        mContentContainer.setVisibility(View.GONE);
-        mButtonRetry.setVisibility(View.GONE);
-
-        likeaPro.getService().getFeed("mojombo", new Callback<gitmodel>() {
+        mButtonRetry.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void success(gitmodel gitmodel, Response response) {
-                if (!gitmodel.getName().isEmpty()){
-                    SplashActivity.start(IntroActivity.this);
-                }else {
-                    RegistrationActivity.start(IntroActivity.this, true, null);
-                }
-            }
+            public void onClick(View view) {
+                mProgressBar.setVisibility(View.VISIBLE);
+                mContentContainer.setVisibility(View.GONE);
+                mButtonRetry.setVisibility(View.GONE);
 
-            @Override
-            public void failure(RetrofitError error) {
-                mProgressBar.setVisibility(View.GONE);
-                mContentContainer.setVisibility(View.VISIBLE);
-                mButtonRetry.setVisibility(View.VISIBLE);
+                likeaPro.getService().getFeed("mojombo", new Callback<gitmodel>() {
+                    @Override
+                    public void success(gitmodel gitmodel, Response response) {
+                        if (likeaPro.getUsername() == null) {
+                            likeaPro.destroyUserSession(); // unsure SharedPrefences cleared
+                            SplashActivity.start(IntroActivity.this);
+                        }
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        mProgressBar.setVisibility(View.GONE);
+                        mContentContainer.setVisibility(View.VISIBLE);
+                        mButtonRetry.setVisibility(View.VISIBLE);
+                    }
+                });
             }
         });
     }
@@ -61,6 +66,10 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mButtonRetry.callOnClick();
+        if (likeaPro.getUsername() != null){
+            MainActivityDrawer.start(IntroActivity.this);
+        }else {
+            mButtonRetry.callOnClick();
+        }
     }
 }
