@@ -1,7 +1,9 @@
 package com.tutor93.indraaguslesmana.actlikepro.utility;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -90,5 +92,20 @@ public class Helpers {
         toastTextView.setTypeface(likeaPro.getRegularFont());
         toastTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         toastTextView.setGravity(Gravity.CENTER);
+    }
+
+    /**
+     * Show confirmation dialog with 2 buttons (positive and negative) (yes or no)
+     */
+    public static void showConfirmDialog(Context context, int titleRes, int messageRes,
+                                         DialogInterface.OnClickListener positiveListener,
+                                         DialogInterface.OnClickListener negativeListener) {
+        new AlertDialog.Builder(context)
+                .setTitle(titleRes)
+                .setMessage(messageRes)
+                .setPositiveButton(R.string.dialog_default_positive, positiveListener)
+                .setNegativeButton(R.string.dialog_default_negative, negativeListener)
+                .setCancelable(true)
+                .show();
     }
 }

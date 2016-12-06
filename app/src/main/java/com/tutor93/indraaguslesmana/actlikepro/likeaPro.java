@@ -56,6 +56,14 @@ public class likeaPro extends Application {
         editor.apply();
     }
 
+    public static void destroyUserSession() {
+        SharedPreferences.Editor editor = sPreferences.edit();
+        editor.remove(Constant.PREFERENCE_USER_NAME);
+        editor.remove(Constant.PREFERENCE_USER_EMAIL);
+        editor.remove(Constant.PREFERENCE_USER_IMAGE);
+        editor.apply();
+    }
+
     public static gitapi getService() {
         sAPIService = (new RestAdapter.Builder()
                 .setEndpoint(API)

@@ -2,6 +2,7 @@ package com.tutor93.indraaguslesmana.actlikepro.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,8 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.tutor93.indraaguslesmana.actlikepro.MainActivity;
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
+import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
 
 public class MainActivityDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -107,8 +110,15 @@ public class MainActivityDrawer extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_signout) {
+            Helpers.showConfirmDialog(MainActivityDrawer.this, R.string.dialog_logout_title,
+                    R.string.dialog_logout_message, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            likeaPro.destroyUserSession();
+                            SplashActivity.start(MainActivityDrawer.this);
+                        }
+                    }, null);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
