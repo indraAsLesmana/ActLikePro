@@ -48,10 +48,11 @@ public class likeaPro extends Application {
 
     }
 
-    public static void setUserSession (String userName, String userEmail){
+    public static void setUserSession (String userName, String userEmail, String userImage){
         SharedPreferences.Editor editor = sPreferences.edit();
         editor.putString(Constant.PREFERENCE_USER_NAME, userName);
         editor.putString(Constant.PREFERENCE_USER_EMAIL, userEmail);
+        editor.putString(Constant.PREFERENCE_USER_IMAGE, userImage);
         editor.apply();
     }
 
@@ -100,6 +101,9 @@ public class likeaPro extends Application {
     }
     public static String getUsermail (){
         return sPreferences.getString(Constant.PREFERENCE_USER_EMAIL, null);
+    }
+    public static String getUserImage (){
+        return sPreferences.getString(Constant.PREFERENCE_USER_IMAGE, null);
     }
 
     private void relaunchApplication() {

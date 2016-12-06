@@ -175,8 +175,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 String mUsername = mName.getText().toString();
                 String mUsermail = gitmodel.getEmail().toString();
+                String mUserAvatar = gitmodel.getAvatarUrl();
 //                likeaPro.setUserSession("ivey", "ivey@gweezlebur.com");
-                likeaPro.setUserSession(mUsername, mUsermail);
+                likeaPro.setUserSession(mUsername, mUsermail, mUserAvatar);
 
                 if (mUsername.equalsIgnoreCase(gitmodel.getLogin())){
                     mRgsMessage.setText(R.string.login_success);

@@ -15,11 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
-import com.tutor93.indraaguslesmana.actlikepro.model.gitmodel;
 
 public class MainActivityDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,7 +46,7 @@ public class MainActivityDrawer extends AppCompatActivity
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         userName = (TextView) navView.getHeaderView(0).findViewById(R.id.nav_username);
         userMail = (TextView) navView.getHeaderView(0).findViewById(R.id.nav_usermail);
-        userImage = (ImageView) findViewById(R.id.nav_imageprofile);
+        userImage = (ImageView) navView.getHeaderView(0).findViewById(R.id.nav_imageprofile);
         sharedpreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -118,7 +117,14 @@ public class MainActivityDrawer extends AppCompatActivity
     }
 
     private void loadUser(){
-        userName.setText(likeaPro.getUsername().toString());
-        userMail.setText(likeaPro.getUsermail().toString());
+        userName.setText(likeaPro.getUsername());
+        userMail.setText(likeaPro.getUsermail());
+
+        if(likeaPro.getUserImage() != null) { // TODO : it will return null, if developer mode on and "Don't keep activities" on.
+            Glide.with(getBaseContext())
+                    .load(likeaPro.getUserImage())
+                    .crossFade()
+                    .into(userImage);
+        }
     }
 }

@@ -27,4 +27,5 @@ public class Constant {
      */
     public static String PREFERENCE_USER_NAME = "p_user_name";
     public static String PREFERENCE_USER_EMAIL = "p_user_email";
+    public static String PREFERENCE_USER_IMAGE = "p_user_image";
 }
