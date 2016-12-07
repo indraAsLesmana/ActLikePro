@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MainActivityDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,6 +30,7 @@ public class MainActivityDrawer extends AppCompatActivity
     private TextView userMail;
     private ImageView userImage;
     private SharedPreferences sharedpreferences;
+    protected RoundedCornersTransformation mTransformation;
 
     public static void start(Activity caller) {
         Intent intent = new Intent(caller, MainActivityDrawer.class);
@@ -50,6 +52,8 @@ public class MainActivityDrawer extends AppCompatActivity
         userMail = (TextView) navView.getHeaderView(0).findViewById(R.id.nav_usermail);
         userImage = (ImageView) navView.getHeaderView(0).findViewById(R.id.nav_imageprofile);
         sharedpreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+        mTransformation = new RoundedCornersTransformation(MainActivityDrawer.this,
+                getResources().getDimensionPixelSize(R.dimen.image_card_rounded_size), 0);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -132,6 +136,7 @@ public class MainActivityDrawer extends AppCompatActivity
         if(likeaPro.getUserImage() != null) { // TODO : it will return null, if developer mode on and "Don't keep activities" on.
             Glide.with(getBaseContext())
                     .load(likeaPro.getUserImage())
+                    .bitmapTransform(mTransformation)
                     .crossFade()
                     .into(userImage);
         }
