@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MainActivityDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,6 +32,14 @@ public class MainActivityDrawer extends AppCompatActivity
     private TextView userMail;
     private ImageView userImage;
     private SharedPreferences sharedpreferences;
+    protected RoundedCornersTransformation mTransformation;
+    private ViewPager mMainPager;
+
+    private final int icon_bundle[] = {
+           R.drawable.ic_bookmark,
+           R.drawable.ic_person,
+           R.drawable.ic_work
+    };
 
     public static void start(Activity caller) {
         Intent intent = new Intent(caller, MainActivityDrawer.class);
@@ -50,6 +61,16 @@ public class MainActivityDrawer extends AppCompatActivity
         userMail = (TextView) navView.getHeaderView(0).findViewById(R.id.nav_usermail);
         userImage = (ImageView) navView.getHeaderView(0).findViewById(R.id.nav_imageprofile);
         sharedpreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+        mTransformation = new RoundedCornersTransformation(MainActivityDrawer.this,
+                getResources().getDimensionPixelSize(R.dimen.image_card_rounded_size), 0);
+
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            SlidingTabsBasicFragment fragment = new SlidingTabsBasicFragment();
+            transaction.replace(R.id.tab_mainframe, fragment);
+            transaction.commit();
+        }
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -105,7 +126,7 @@ public class MainActivityDrawer extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_share) {
 
@@ -132,6 +153,7 @@ public class MainActivityDrawer extends AppCompatActivity
         if(likeaPro.getUserImage() != null) { // TODO : it will return null, if developer mode on and "Don't keep activities" on.
             Glide.with(getBaseContext())
                     .load(likeaPro.getUserImage())
+                    .bitmapTransform(mTransformation)
                     .crossFade()
                     .into(userImage);
         }
