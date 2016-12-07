@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tutor93.indraaguslesmana.actlikepro.R;
 import com.tutor93.indraaguslesmana.actlikepro.likeaPro;
 import com.tutor93.indraaguslesmana.actlikepro.utility.Helpers;
@@ -109,8 +110,8 @@ public class MainActivityDrawer extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_profile) {
+            profileActivity.start(MainActivityDrawer.this);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_signout) {
@@ -136,6 +137,7 @@ public class MainActivityDrawer extends AppCompatActivity
         if(likeaPro.getUserImage() != null) { // TODO : it will return null, if developer mode on and "Don't keep activities" on.
             Glide.with(getBaseContext())
                     .load(likeaPro.getUserImage())
+                    .diskCacheStrategy(DiskCacheStrategy.RESULT)
                     .bitmapTransform(mTransformation)
                     .crossFade()
                     .into(userImage);

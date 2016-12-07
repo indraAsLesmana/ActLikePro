@@ -113,12 +113,4 @@ public class likeaPro extends Application {
     public static String getUserImage (){
         return sPreferences.getString(Constant.PREFERENCE_USER_IMAGE, null);
     }
-
-    private void relaunchApplication() {
-        Application application = likeaPro.getInstance();
-        Intent intent = application.getPackageManager()
-                .getLaunchIntentForPackage(application.getPackageName());
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        application.startActivity(intent);
-    }
 }

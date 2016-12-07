@@ -21,7 +21,6 @@
         android:layout_marginTop="@dimen/splash_viewpager_text_to_pic"
         android:gravity="center"
         android:textSize="@dimen/splash_viewpager_text_size"
-        android:text="@string/splash_viewpager_item_1"
         android:textColor="@color/splash_viewpager_text_color"
         android:paddingLeft="@dimen/splash_viewpager_text_padding"
         android:paddingRight="@dimen/splash_viewpager_text_padding"/>
